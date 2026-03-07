@@ -1,0 +1,37 @@
+plugins {
+    id 'java-library'
+
+}
+
+group = 'guru.qa'
+version = '1.0-SNAPSHOT'
+
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation(
+            'org.junit.jupiter:junit-jupiter:5.10.1',
+            'org.slf4j:slf4j-simple:2.0.17',
+
+    )
+}
+tasks.withType(Test) {
+    systemProperties(System.getProperties())
+    useJUnitPlatform()
+
+    testLogging {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
+}
+
+
+
+
+
